@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Флажный семафор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        input {
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Флажный семафор</h1>
+    <p>Определите символ, изображённый на фото:</p>
+    <img id="semaphoreImage" src="" alt="Символ флажного семафора">
+    <div>
+        <input type="text" id="userInput" placeholder="Введите букву">
+        <button onclick="checkAnswer()">Проверить</button>
+    </div>
+    <div class="result" id="result"></div>
+
+    <script>
+        const images = ["А.jpg", "Б.jpg", "В.jpg", "Г.jpg", "Д.jpg", "Е.jpg", "Ж.jpg", "З.jpg", "И.jpg", "К.jpg", "Л.jpg", "М.jpg", "Н.jpg", "О.jpg", "П.jpg", "Р.jpg", "С.jpg", "Т.jpg", "У.jpg", "Ф.jpg", "Х.jpg", "Ц.jpg", "Ч.jpg", "Ш.jpg", "Щ.jpg", "Ь.jpg", "Ю.jpg", "Я.jpg"];
+
+        let currentLetter = "";
+
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const randomImage = images[randomIndex];
+            currentLetter = randomImage.split(".")[0];
+            document.getElementById("semaphoreImage").src = randomImage;
+            document.getElementById("result").textContent = "";
+            document.getElementById("userInput").value = "";
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("userInput").value.trim().toUpperCase();
+            const resultElement = document.getElementById("result");
+            if (userAnswer === currentLetter) {
+                resultElement.textContent = "Верно!";
+                resultElement.style.color = "green";
+                setTimeout(getRandomImage, 1000);
+            } else {
+                resultElement.textContent = "Неправильно. Попробуйте ещё раз.";
+                resultElement.style.color = "red";
+            }
+        }
+
+        // Показать первое изображение при загрузке страницы
+        window.onload = getRandomImage;
+    </script>
+ <footer style="margin-top: 50px; font-size: 14px; color: gray;">
+        Разработка Andrey Shramko
+    </footer>
+</body>
+</html>
