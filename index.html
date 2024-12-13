@@ -17,18 +17,25 @@
             height: auto;
             margin-bottom: 20px;
         }
-        input {
-            font-size: 16px;
-            padding: 10px;
+        .letters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             margin-bottom: 20px;
-            width: 80%;
-            max-width: 300px;
-            box-sizing: border-box;
         }
-        button {
-            padding: 10px 20px;
+        .letters button {
+            padding: 10px 15px;
             font-size: 16px;
             cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .letters button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.1);
         }
         .result {
             font-size: 18px;
@@ -40,14 +47,15 @@
     <h1>Флажный семафор</h1>
     <p>Определите букву:</p>
     <img id="semaphoreImage" src="" alt="Символ флажного семафора">
-    <div>
-        <input type="text" id="userInput" placeholder="Введите букву">
-        <button onclick="checkAnswer()">Проверить</button>
+    <div class="letters" id="lettersContainer">
+        <!-- Кнопки букв будут добавлены динамически -->
     </div>
     <div class="result" id="result"></div>
 
     <script>
         const images = ["А.jpg", "Б.jpg", "В.jpg", "Г.jpg", "Д.jpg", "Е.jpg", "Ж.jpg", "З.jpg", "И.jpg", "К.jpg", "Л.jpg", "М.jpg", "Н.jpg", "О.jpg", "П.jpg", "Р.jpg", "С.jpg", "Т.jpg", "У.jpg", "Ф.jpg", "Х.jpg", "Ц.jpg", "Ч.jpg", "Ш.jpg", "Щ.jpg", "Ь.jpg", "Ю.jpg", "Я.jpg"];
+
+        const letters = ["А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ь", "Ю", "Я"];
 
         let currentLetter = "";
 
@@ -57,13 +65,11 @@
             currentLetter = randomImage.split(".")[0];
             document.getElementById("semaphoreImage").src = randomImage;
             document.getElementById("result").textContent = "";
-            document.getElementById("userInput").value = "";
         }
 
-        function checkAnswer() {
-            const userAnswer = document.getElementById("userInput").value.trim().toUpperCase();
+        function checkAnswer(letter) {
             const resultElement = document.getElementById("result");
-            if (userAnswer === currentLetter) {
+            if (letter === currentLetter) {
                 resultElement.textContent = "Верно!";
                 resultElement.style.color = "green";
                 setTimeout(getRandomImage, 1000);
@@ -73,10 +79,24 @@
             }
         }
 
-        // Показать первое изображение при загрузке страницы
-        window.onload = getRandomImage;
+        function createLetterButtons() {
+            const container = document.getElementById("lettersContainer");
+            letters.forEach(letter => {
+                const button = document.createElement("button");
+                button.textContent = letter;
+                button.onclick = () => checkAnswer(letter);
+                container.appendChild(button);
+            });
+        }
+
+        // Инициализация интерфейса
+        window.onload = () => {
+            createLetterButtons();
+            getRandomImage();
+        };
     </script>
- <footer style="margin-top: 50px; font-size: 14px; color: gray;">
+
+    <footer style="margin-top: 50px; font-size: 14px; color: gray;">
         Разработка Andrey Shramko
     </footer>
 </body>
