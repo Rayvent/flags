@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+#semaphoreImage {
+    max-width: 80%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.result {
+    font-size: 18px;
+    margin-top: 20px;
+    color: transparent; /* Изначально скрыт */
+    min-height: 24px; /* Резервируем место под текст */
+    display: inline-block; /* Обеспечиваем, что элемент занимает место */
+}
+
+.letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.letters button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4f4f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Эффект нажатия на кнопку */
+.letters button:active {
+    background-color: #ccc;
+    transform: scale(0.95);
+}
+
+/* Убираем серость при фокусе */
+.letters button:focus {
+    outline: none;
+}
+
+/* Эффект наведения */
+.letters button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+/* Мобильная версия (адаптивность) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .letters button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #semaphoreImage {
+        max-width: 90%;
+    }
+}
