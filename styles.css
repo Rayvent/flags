@@ -9,7 +9,7 @@ body {
 
 .container {
     max-width: 100%;
-    padding: 20px;
+    padding: 10px; /* Уменьшен отступ */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -17,25 +17,26 @@ body {
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 22px; /* Уменьшен размер */
+    margin-bottom: 5px; /* Уменьшен отступ снизу */
 }
 
 p {
-    font-size: 18px;
+    font-size: 16px; /* Уменьшен размер */
+    margin: 5px 0; /* Уменьшены отступы */
 }
 
 #semaphoreImage {
     max-width: 80%;
     height: auto;
-    margin: 20px 0;
+    margin: 10px 0; /* Уменьшен отступ сверху и снизу */
 }
 
 .result {
-    font-size: 18px;
-    margin-top: 20px;
+    font-size: 16px; /* Уменьшен размер шрифта */
+    margin-top: 10px; /* Уменьшен отступ сверху */
     color: transparent; /* Изначально скрыт */
-    min-height: 24px; /* Резервируем место под текст */
+    min-height: 20px; /* Резервируем место под текст */
     display: inline-block; /* Обеспечиваем, что элемент занимает место */
 }
 
@@ -43,13 +44,13 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 5px; /* Уменьшено расстояние между кнопками */
+    margin-top: 10px; /* Уменьшен отступ сверху */
 }
 
 .letters button {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 8px 10px; /* Уменьшен размер кнопок */
+    font-size: 14px; /* Уменьшен размер текста в кнопках */
     cursor: pointer;
     border: none;
     background-color: #f4f4f9;
@@ -72,22 +73,22 @@ p {
 /* Эффект наведения */
 .letters button:hover {
     background-color: #e0e0e0;
-    transform: scale(1.1);
+    transform: scale(1.05); /* Уменьшен эффект увеличения */
 }
 
 /* Мобильная версия (адаптивность) */
 @media (max-width: 600px) {
     h1 {
-        font-size: 20px;
+        font-size: 18px; /* Уменьшен размер */
     }
 
     p {
-        font-size: 16px;
+        font-size: 14px; /* Уменьшен размер */
     }
 
     .letters button {
-        padding: 8px 12px;
-        font-size: 14px;
+        padding: 6px 8px; /* Ещё меньше для мобильных */
+        font-size: 12px; /* Уменьшен размер текста */
     }
 
     #semaphoreImage {
